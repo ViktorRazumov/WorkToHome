@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -61,7 +63,6 @@ public class TrafficLightPanel {
     generalPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
     generalPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-
     makeCenter(generalPanel);
     makeSize(generalPanel);
     disable(generalPanel);
@@ -70,7 +71,7 @@ public class TrafficLightPanel {
     return generalPanel;
   }
 
-  private static void makeCenter(JPanel panel){
+  private static void makeCenter(@NotNull JPanel panel){
     for (Component c : panel.getComponents()) {
       if (c instanceof JPanel || c instanceof JButton || c instanceof JLabel || c instanceof JTextField) {
         ((JComponent) c).setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -78,7 +79,7 @@ public class TrafficLightPanel {
     }
   }
 
-  private static void makeSize(JPanel panel){
+  private static void makeSize(@NotNull JPanel panel){
     for (Component c : panel.getComponents()) {
       if (c instanceof JTextField || c instanceof JComboBox) {
         c.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
@@ -87,7 +88,7 @@ public class TrafficLightPanel {
     }
   }
 
-  private static void disable(JPanel panel){
+  private static void disable(@NotNull JPanel panel){
     for (Component c : panel.getComponents()) {
       if (c instanceof JTextField) {
         ((JTextField) c).setEditable(false);
