@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class MenuBar {
+
   public static JMenuBar getMenuBar() {
     JMenuBar menuBar = new JMenuBar();
     JMenu menu = new JMenu("Menu");
@@ -16,11 +17,11 @@ public class MenuBar {
     menu2.add(item4);
 
     item3.addActionListener((ActionEvent e) -> MainPanel.offWinter());
-
     item4.addActionListener((ActionEvent e) -> MainPanel.onWinter());
 
     menuBar.add(menu);
     menuBar.add(menu2);
+
     return menuBar;
   }
 }
