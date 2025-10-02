@@ -7,8 +7,20 @@ import java.time.format.DateTimeFormatter;
 
 public class TrafficLightPanel {
 
-  public static JPanel createPanel(int number, AlarmClock ac) {
+  private final int number;
+  private final AlarmClock alarmClock;
 
+  JButton button1;
+  JButton button2;
+  JButton button3;
+  JButton button4;
+
+  public TrafficLightPanel(int number, AlarmClock ac) {
+    this.number = number;
+    this.alarmClock = ac;
+  }
+
+  public JPanel createPanel() {
     JPanel generalPanel = new JPanel();
     BoxLayout boxLayout = new BoxLayout(generalPanel, BoxLayout.Y_AXIS);
     generalPanel.setLayout(boxLayout);
@@ -24,10 +36,10 @@ public class TrafficLightPanel {
     JLabel label2 = new JLabel("Performer: ");
     JLabel label3 = new JLabel("Next Action: ");
 
-    JButton button1 = new JButton("Green");
-    JButton button2 = new JButton("Yellow");
-    JButton button3 = new JButton("Red");
-    JButton button4 = new JButton("Action");
+    button1 = new JButton("Green");
+    button2 = new JButton("Yellow");
+    button3 = new JButton("Red");
+    button4 = new JButton("Action");
 
     JTextField textField1 = new JTextField("Green");
     JTextField textField2 = new JTextField("Yellow");
@@ -82,8 +94,8 @@ public class TrafficLightPanel {
 
     click1(button1, button4, textField1, textField2, textField3, textField4, textField5);
     click1(button3, button4, textField3, textField2, textField1, textField4, textField5);
-    click2(button2, button4, textField1, textField2, textField3, textField4, textField5, ac);
-    click3(button4, textField4, textField5, ac);
+    click2(button2, button4, textField1, textField2, textField3, textField4, textField5, alarmClock);
+    click3(button4, textField4, textField5, alarmClock);
 
     return generalPanel;
   }
@@ -136,7 +148,7 @@ public class TrafficLightPanel {
     });
 
     b.addActionListener(_ -> {
-      ac.setAlarm(LocalDateTime.now());
+      ac.setAlarm(LocalDateTime.now().plusMinutes(1));
     });
   }
 
@@ -148,8 +160,7 @@ public class TrafficLightPanel {
     });
 
     b.addActionListener(_ -> {
-      ac.stop();
-      ac.setAlarm(LocalDateTime.now());
+      ac.setAlarm(LocalDateTime.now().plusMinutes(1));
     });
   }
 
@@ -169,6 +180,14 @@ public class TrafficLightPanel {
 
   private static void disabled(JTextField tf) {
     tf.setText("-- -- -- -- --");
+  }
+
+  public void pressRed() {
+    button3.doClick();
+  }
+
+  public void pressYellow() {
+    button2.doClick();
   }
 
 }

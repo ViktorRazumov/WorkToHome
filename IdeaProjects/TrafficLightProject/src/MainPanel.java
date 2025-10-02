@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class MainPanel {
 
@@ -17,12 +16,14 @@ public class MainPanel {
     winterPanel.setLayout(layout2);
 
     for (int i = 1; i < 6; i++) {
-      summerPanel.add(TrafficLightPanel.createPanel(i));
+      AlarmClock ac = new AlarmClock(i);
+      summerPanel.add(TrafficLightPanel.createPanel(i, ac));
       summerPanel.add(Box.createHorizontalStrut(3));
     }
 
     for (int i = 6; i < 11; i++) {
-      winterPanel.add(TrafficLightPanel.createPanel(i));
+      AlarmClock ac = new AlarmClock(i);
+      winterPanel.add(TrafficLightPanel.createPanel(i, ac));
       winterPanel.add(Box.createHorizontalStrut(3));
     }
 
