@@ -4,11 +4,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class TrafficLightPanel {
+  static int panelNumber;
+  static JTextField textField1;
+  static JTextField textField2;
+  static JTextField textField3;
+  static JTextField textField4;
+  static JTextField textField5;
 
   public static JPanel createPanel(int number, AlarmClock ac) {
-
+    panelNumber = number;
     JPanel generalPanel = new JPanel();
     BoxLayout boxLayout = new BoxLayout(generalPanel, BoxLayout.Y_AXIS);
     generalPanel.setLayout(boxLayout);
@@ -29,11 +36,11 @@ public class TrafficLightPanel {
     JButton button3 = new JButton("Red");
     JButton button4 = new JButton("Action");
 
-    JTextField textField1 = new JTextField("Green");
-    JTextField textField2 = new JTextField("Yellow");
-    JTextField textField3 = new JTextField("Red");
-    JTextField textField4 = new JTextField("Action");
-    JTextField textField5 = new JTextField("Next Action");
+    textField1 = new JTextField("Green");
+    textField2 = new JTextField("Yellow");
+    textField3 = new JTextField("Red");
+    textField4 = new JTextField("Action");
+    textField5 = new JTextField("Next Action");
 
     button1.setBackground(Color.GREEN);
     button2.setBackground(Color.yellow);
@@ -80,10 +87,12 @@ public class TrafficLightPanel {
     disable(generalPanel);
     disable(trafficLightPanel);
 
-    click1(button1, button4, textField1, textField2, textField3, textField4, textField5);
-    click1(button3, button4, textField3, textField2, textField1, textField4, textField5);
-    click2(button2, button4, textField1, textField2, textField3, textField4, textField5, ac);
-    click3(button4, textField4, textField5, ac);
+    click1(button1, button4, textField1, textField2, textField3, textField4, textField5, label1);
+    click1(button3, button4, textField3, textField2, textField1, textField4, textField5, label1);
+    click2(button2, button4, textField1, textField2, textField3, textField4, textField5, ac, label1);
+    click3(button4, textField4, textField5, ac, label1, comboBox);
+
+//    logClick(button1, textField1);
 
     return generalPanel;
   }
@@ -114,9 +123,10 @@ public class TrafficLightPanel {
     }
   }
 
-  private static void click1(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5) {
+  private static void click1(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, JLabel label) {
     b.addActionListener(_ -> {
       setTextTf(tf1);
+      MainPanel.logPanel.appendText(tf1.getText() + " " + b.getText() + " fgfgdfgfgdgdg " + label.getText());
       disabled(tf2);
       disabled(tf3);
       disabled(tf5);
@@ -125,32 +135,32 @@ public class TrafficLightPanel {
     });
   }
 
-  private static void click2(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, AlarmClock ac) {
+  private static void click2(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, AlarmClock ac, JLabel label) {
     b.addActionListener(_ -> {
       setTextTf(tf2);
+      setTextTfNext(tf5);
+      MainPanel.logPanel.appendText(tf2.getText() + " " + b.getText() + " fgfgdfgfgdgdg " + label.getText() + " next text " + tf5.getText());
+    });
+
+    b.addActionListener(e -> {
       disabled(tf1);
       disabled(tf3);
       b2.setEnabled(true);
       tf4.setEnabled(true);
-      setTextTfNext(tf5);
     });
 
-    b.addActionListener(_ -> {
-      ac.setAlarm(LocalDateTime.now());
-    });
+    b.addActionListener(_ -> ac.setAlarm(LocalDateTime.now()));
   }
 
-  private static void click3(JButton b, JTextField tf4, JTextField tf5, AlarmClock ac) {
+  private static void click3(JButton b, JTextField tf4, JTextField tf5, AlarmClock ac, JLabel label, JComboBox cb) {
     b.addActionListener(_ -> {
       tf4.setEnabled(true);
       setTextTf(tf4);
       setTextTfNext(tf5);
+      MainPanel.logPanel.appendText(tf4.getText() + " " + Objects.requireNonNull(cb.getSelectedItem()) +  " " + b.getText() + " fgfgdfgfgdgdg " + label.getText() + " next text " + tf5.getText());
     });
 
-    b.addActionListener(_ -> {
-      ac.stop();
-      ac.setAlarm(LocalDateTime.now());
-    });
+    b.addActionListener(_ -> ac.setAlarm(LocalDateTime.now()));
   }
 
   private static void setTextTfNext(JTextField tf) {

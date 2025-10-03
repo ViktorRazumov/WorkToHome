@@ -1,12 +1,16 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class MainPanel {
 
   static JPanel mainPanel = new JPanel();
   static JPanel summerPanel = new JPanel();
   static JPanel winterPanel = new JPanel();
+  static LogPanel logPanel;
 
   public static JPanel getPanel() {
+
+    logPanel = new LogPanel();
 
     BoxLayout layout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
     BoxLayout layout1 = new BoxLayout(summerPanel, BoxLayout.X_AXIS);
@@ -29,7 +33,7 @@ public class MainPanel {
 
     mainPanel.add(summerPanel);
     mainPanel.add(winterPanel);
-
+    mainPanel.add(logPanel);
     return mainPanel;
   }
 
@@ -39,6 +43,9 @@ public class MainPanel {
 
   public static void onWinter() {
     winterPanel.setVisible(true);
+  }
+
+  public void chooseBtn(JPanel panel) {
   }
 
 
