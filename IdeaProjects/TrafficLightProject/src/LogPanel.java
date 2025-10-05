@@ -15,7 +15,7 @@ public class LogPanel extends JPanel{
     JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
     this.add(scrollPane,BorderLayout.CENTER);
-    this.setPreferredSize(new Dimension(500, 300));
+
   }
 
   public void appendText(String text) {

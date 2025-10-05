@@ -1,0 +1,53 @@
+[2025-10-05 03:46] [Traffic Light №2] 05.10.2025 03:46 Green fgfgdfgfgdgdg Traffic Light №2
+[2025-10-05 03:46] [Traffic Light №2] 05.10.2025 03:46 Red fgfgdfgfgdgdg Traffic Light №2
+[2025-10-05 03:46] [Traffic Light №3] 05.10.2025 03:46 Red fgfgdfgfgdgdg Traffic Light №3
+[2025-10-05 03:46] [Traffic Light №3] 05.10.2025 03:46 Yellow fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 03:46
+[2025-10-05 03:46] [Traffic Light №3] 05.10.2025 03:46 Green fgfgdfgfgdgdg Traffic Light №3
+[2025-10-05 03:46] [Traffic Light №3] 05.10.2025 03:46 Green fgfgdfgfgdgdg Traffic Light №3
+[2025-10-05 03:46] [Traffic Light №3] 05.10.2025 03:46 Yellow fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 03:46
+[2025-10-05 03:46] [Traffic Light №3] 05.10.2025 03:46 ONE Action fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 03:46
+[2025-10-05 03:48] [Traffic Light №4]  Green fgfgdfgfgdgdg Traffic Light №4
+[2025-10-05 03:48] [Traffic Light №4]  Red fgfgdfgfgdgdg Traffic Light №4
+[2025-10-05 03:48] [Traffic Light №9]  Green fgfgdfgfgdgdg Traffic Light №9
+[2025-10-05 03:48] [Traffic Light №9]  Green fgfgdfgfgdgdg Traffic Light №9
+[2025-10-05 03:48] [Traffic Light №9]  Green fgfgdfgfgdgdg Traffic Light №9
+[2025-10-05 03:48] [Traffic Light №4]  Red fgfgdfgfgdgdg Traffic Light №4
+[2025-10-05 03:48] [Traffic Light №2]  Red fgfgdfgfgdgdg Traffic Light №2
+[2025-10-05 03:48] [Traffic Light №2]  Red fgfgdfgfgdgdg Traffic Light №2
+[2025-10-05 03:48] [Traffic Light №2]  Red fgfgdfgfgdgdg Traffic Light №2
+[2025-10-05 03:48] [Traffic Light №2]  Green fgfgdfgfgdgdg Traffic Light №2
+[2025-10-05 03:48] [Traffic Light №10]  Green fgfgdfgfgdgdg Traffic Light №10
+[2025-10-05 03:48] [Traffic Light №10]  Red fgfgdfgfgdgdg Traffic Light №10
+[2025-10-05 03:54] [Traffic Light №7]  Red fgfgdfgfgdgdg Traffic Light №7
+[2025-10-05 03:54] [Traffic Light №7]  Red fgfgdfgfgdgdg Traffic Light №7
+[2025-10-05 03:54] [Traffic Light №8]  Red fgfgdfgfgdgdg Traffic Light №8
+[2025-10-05 03:54] [Traffic Light №8]  Yellow fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 03:54
+[2025-10-05 03:54] [Traffic Light №8]  ONE Action fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 03:54
+[2025-10-05 04:10] [Traffic Light №1]  Red fgfgdfgfgdgdg Traffic Light №1
+[2025-10-05 04:10] [Traffic Light №1]  Red fgfgdfgfgdgdg Traffic Light №1
+[2025-10-05 04:10] [Traffic Light №4]  Green fgfgdfgfgdgdg Traffic Light №4
+[2025-10-05 04:10] [Traffic Light №3]  Yellow fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 04:10
+[2025-10-05 04:10] [Traffic Light №5]  Red fgfgdfgfgdgdg Traffic Light №5
+[2025-10-05 04:10] [Traffic Light №10]  Green fgfgdfgfgdgdg Traffic Light №10
+[2025-10-05 04:10] [Traffic Light №10]  Yellow fgfgdfgfgdgdg Traffic Light №10 next text 08.10.2025 04:10
+[2025-10-05 04:10] [Traffic Light №9]  Red fgfgdfgfgdgdg Traffic Light №9
+[2025-10-05 04:10] [Traffic Light №9]  Green fgfgdfgfgdgdg Traffic Light №9
+[2025-10-05 04:10] [Traffic Light №8]  Yellow fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 04:10
+[2025-10-05 04:10] [Traffic Light №8]  Red fgfgdfgfgdgdg Traffic Light №8
+[2025-10-05 04:10] [Traffic Light №7]  Green fgfgdfgfgdgdg Traffic Light №7
+[2025-10-05 04:10] [Traffic Light №8]  Green fgfgdfgfgdgdg Traffic Light №8
+[2025-10-05 04:10] [Traffic Light №7]  Yellow fgfgdfgfgdgdg Traffic Light №7 next text 08.10.2025 04:10
+[2025-10-05 04:10] [Traffic Light №7]  ONE Action fgfgdfgfgdgdg Traffic Light №7 next text 08.10.2025 04:10
+[2025-10-05 04:11] [Traffic Light №6]  Red fgfgdfgfgdgdg Traffic Light №6
+[2025-10-05 04:13] [Traffic Light №8]  Yellow fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 04:13
+[2025-10-05 04:13] [Traffic Light №8]  ONE Action fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 04:13
+[2025-10-05 04:13] [Traffic Light №8]  Yellow fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 04:13
+[2025-10-05 04:13] [Traffic Light №8]  TWO Action fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 04:13
+[2025-10-05 04:13] [Traffic Light №8]  Green fgfgdfgfgdgdg Traffic Light №8
+[2025-10-05 04:13] [Traffic Light №8]  Yellow fgfgdfgfgdgdg Traffic Light №8 next text 08.10.2025 04:13
+[2025-10-05 04:22] [Traffic Light №3]  Red fgfgdfgfgdgdg Traffic Light №3
+[2025-10-05 04:22] [Traffic Light №3]  Yellow fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 04:22
+[2025-10-05 04:22] [Traffic Light №3]  ONE Action fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 04:22
+[2025-10-05 04:22] [Traffic Light №3]  Yellow fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 04:22
+[2025-10-05 04:22] [Traffic Light №3]  TWO Action fgfgdfgfgdgdg Traffic Light №3 next text 08.10.2025 04:22
+[2025-10-05 04:22] [Traffic Light №3]  Red fgfgdfgfgdgdg Traffic Light №3

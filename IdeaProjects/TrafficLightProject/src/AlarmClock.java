@@ -6,15 +6,20 @@ import java.util.TimerTask;
 public class AlarmClock  {
 
   int number;
+
   public AlarmClock(int number) {
     this.number = number;
   }
 
   public boolean isRunning;
-  Timer t = new Timer();
+  Timer t;
 
   public void setAlarm(LocalDateTime time) {
+    if (t != null) {
+      t.cancel();
+    }
 
+    t = new Timer();
 
     t.schedule(new TimerTask(){
       @Override
@@ -27,12 +32,11 @@ public class AlarmClock  {
             playBeep();
           JOptionPane.showMessageDialog(null, "TIMETADAIME" + number, "TIME", JOptionPane.INFORMATION_MESSAGE);
           });
-          cancel();
           t.cancel();
+          isRunning = false;
         }
       }
     }, 0, 1_000);
-
   }
 
   private void playBeep() {

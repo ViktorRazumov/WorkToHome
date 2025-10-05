@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class MainPanel {
@@ -11,6 +12,7 @@ public class MainPanel {
   public static JPanel getPanel() {
 
     logPanel = new LogPanel();
+    logPanel.setBorder(new EmptyBorder(0, 20, 0, 20));
 
     BoxLayout layout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
     BoxLayout layout1 = new BoxLayout(summerPanel, BoxLayout.X_AXIS);
@@ -44,9 +46,4 @@ public class MainPanel {
   public static void onWinter() {
     winterPanel.setVisible(true);
   }
-
-  public void chooseBtn(JPanel panel) {
-  }
-
-
 }

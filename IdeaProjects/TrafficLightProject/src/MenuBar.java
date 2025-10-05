@@ -7,14 +7,16 @@ public class MenuBar {
     JMenuBar menuBar = new JMenuBar();
     JMenu menu = new JMenu("Menu");
     JMenu menu2 = new JMenu("Menu2");
-    JMenuItem item1 = new JMenuItem("item1");
+    JMenuItem logBtn = new JMenuItem("View log");
     JMenuItem item2 = new JMenuItem("item2");
     JMenuItem item3 = new JMenuItem("item3");
     JMenuItem item4 = new JMenuItem("item4");
-    menu.add(item1);
+    menu.add(logBtn);
     menu.add(item2);
     menu2.add(item3);
     menu2.add(item4);
+
+    logBtn.addActionListener(e -> new LogWindow().setVisible(true));
 
     item3.addActionListener((ActionEvent e) -> MainPanel.offWinter());
     item4.addActionListener((ActionEvent e) -> MainPanel.onWinter());

@@ -1,5 +1,8 @@
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
+import javax.swing.plaf.basic.BasicComboPopup;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.time.LocalDateTime;
@@ -18,14 +21,20 @@ public class TrafficLightPanel {
     panelNumber = number;
     JPanel generalPanel = new JPanel();
     BoxLayout boxLayout = new BoxLayout(generalPanel, BoxLayout.Y_AXIS);
+    Dimension gpDim = new Dimension(300, 370);
     generalPanel.setLayout(boxLayout);
-    generalPanel.setMaximumSize(new Dimension(300, 500));
+    generalPanel.setMaximumSize(gpDim);
+    generalPanel.setPreferredSize(gpDim);
+    generalPanel.setMinimumSize(gpDim);
 
-    JPanel trafficLightPanel = new JPanel();
-    GridLayout trafficLightLayout = new GridLayout(3, 2, 5, 5);
-    trafficLightPanel.setLayout(trafficLightLayout);
+    JPanel trafficLightPanel = new JPanel(new GridLayout(3, 2, 5, 5));
     trafficLightPanel.setBackground(Color.gray);
-    trafficLightPanel.setMaximumSize(new Dimension(300, 150));
+    Dimension tlpDim = new Dimension(298, 120);
+    trafficLightPanel.setMaximumSize(tlpDim);
+    trafficLightPanel.setPreferredSize(tlpDim);
+    trafficLightPanel.setMinimumSize(tlpDim);
+
+    JPanel comboPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
 
     JLabel label1 = new JLabel("Traffic Light №" + number);
     JLabel label2 = new JLabel("Performer: ");
@@ -51,8 +60,12 @@ public class TrafficLightPanel {
 
     String[] items = {"ONE", "TWO", "THREE"};
     JComboBox<String> comboBox = new JComboBox<>(items);
-    comboBox.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
-    comboBox.setMaximumSize(new Dimension(100, 40));
+    Dimension cbDim = new Dimension(200, 40);
+    comboBox.setPreferredSize(cbDim);
+    comboBox.setMaximumSize(comboBox.getPreferredSize());
+    comboBox.setMinimumSize(cbDim);
+
+    comboPanel.add(comboBox);
 
     trafficLightPanel.add(button1);
     trafficLightPanel.add(textField1);
@@ -68,7 +81,7 @@ public class TrafficLightPanel {
     generalPanel.add(Box.createVerticalStrut(10));
     generalPanel.add(label2);
     generalPanel.add(Box.createVerticalStrut(10));
-    generalPanel.add(comboBox);
+    generalPanel.add(comboPanel);
     generalPanel.add(Box.createVerticalStrut(10));
     generalPanel.add(button4);
     generalPanel.add(Box.createVerticalStrut(10));
@@ -87,12 +100,10 @@ public class TrafficLightPanel {
     disable(generalPanel);
     disable(trafficLightPanel);
 
-    click1(button1, button4, textField1, textField2, textField3, textField4, textField5, label1);
-    click1(button3, button4, textField3, textField2, textField1, textField4, textField5, label1);
-    click2(button2, button4, textField1, textField2, textField3, textField4, textField5, ac, label1);
-    click3(button4, textField4, textField5, ac, label1, comboBox);
-
-//    logClick(button1, textField1);
+    click(button1, button4, textField1, textField2, textField3, textField4, textField5, label1, ac);
+    click(button3, button4, textField3, textField2, textField1, textField4, textField5, label1, ac);
+    click(button2, button4, textField1, textField2, textField3, textField4, textField5, ac, label1);
+    click(button4, textField4, textField5, ac, label1, comboBox);
 
     return generalPanel;
   }
@@ -123,44 +134,68 @@ public class TrafficLightPanel {
     }
   }
 
-  private static void click1(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, JLabel label) {
+  private static void click(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, JLabel label, AlarmClock ac) {
     b.addActionListener(_ -> {
-      setTextTf(tf1);
-      MainPanel.logPanel.appendText(tf1.getText() + " " + b.getText() + " fgfgdfgfgdgdg " + label.getText());
-      disabled(tf2);
-      disabled(tf3);
-      disabled(tf5);
-      b2.setEnabled(false);
-      tf4.setEnabled(false);
+      setTextAndLog(tf1, b, label);
+      changeTheState(tf2, tf3, tf4, tf5, b2);
+      ac.stop();
     });
   }
 
-  private static void click2(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, AlarmClock ac, JLabel label) {
+  private static void click(JButton b, JButton b2, JTextField tf1, JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, AlarmClock ac, JLabel label) {
     b.addActionListener(_ -> {
-      setTextTf(tf2);
-      setTextTfNext(tf5);
-      MainPanel.logPanel.appendText(tf2.getText() + " " + b.getText() + " fgfgdfgfgdgdg " + label.getText() + " next text " + tf5.getText());
+      setTextAndLog(tf2, tf5, b, label);
+      changeTheState(tf1, tf3, tf4, b2);
+      handleAlarm(ac);
     });
-
-    b.addActionListener(e -> {
-      disabled(tf1);
-      disabled(tf3);
-      b2.setEnabled(true);
-      tf4.setEnabled(true);
-    });
-
-    b.addActionListener(_ -> ac.setAlarm(LocalDateTime.now()));
   }
 
-  private static void click3(JButton b, JTextField tf4, JTextField tf5, AlarmClock ac, JLabel label, JComboBox cb) {
+  private static void click(JButton b, JTextField tf4, JTextField tf5, AlarmClock ac, JLabel label, JComboBox cb) {
     b.addActionListener(_ -> {
-      tf4.setEnabled(true);
-      setTextTf(tf4);
-      setTextTfNext(tf5);
-      MainPanel.logPanel.appendText(tf4.getText() + " " + Objects.requireNonNull(cb.getSelectedItem()) +  " " + b.getText() + " fgfgdfgfgdgdg " + label.getText() + " next text " + tf5.getText());
+      setTextAndLog(tf4, tf5, b, label, cb);
+      changeTheState(tf4);
+      handleAlarm(ac);
     });
+  }
 
-    b.addActionListener(_ -> ac.setAlarm(LocalDateTime.now()));
+  private static void changeTheState(JTextField tf2, JTextField tf3, JTextField tf4, JTextField tf5, JButton b2) {
+    disabled(tf2);
+    disabled(tf3);
+    disabled(tf5);
+    b2.setEnabled(false);
+    tf4.setEnabled(false);
+  }
+
+  private static void setTextAndLog(JTextField tf1, JButton b, JLabel label) {
+    setTextTf(tf1);
+    LogHelper.append(label.getText(), " " + b.getText() + " fgfgdfgfgdgdg " + label.getText());
+  }
+
+  private static void handleAlarm(AlarmClock ac) {
+    ac.setAlarm(LocalDateTime.now());
+  }
+
+  private static void changeTheState(JTextField tf1, JTextField tf3, JTextField tf4, JButton b2) {
+    disabled(tf1);
+    disabled(tf3);
+    b2.setEnabled(true);
+    tf4.setEnabled(true);
+  }
+
+  private static void setTextAndLog(JTextField tf2, JTextField tf5, JButton b, JLabel label) {
+    setTextTf(tf2);
+    setTextTfNext(tf5);
+    LogHelper.append(label.getText(), " " + b.getText() + " fgfgdfgfgdgdg " + label.getText() + " next text " + tf5.getText() );
+  }
+
+  private static void changeTheState(JTextField tf4) {
+    tf4.setEnabled(true);
+  }
+
+  private static void setTextAndLog(JTextField tf4, JTextField tf5, JButton b, JLabel label, JComboBox cb) {
+    setTextTf(tf4);
+    setTextTfNext(tf5);
+    LogHelper.append(label.getText(), " " + Objects.requireNonNull(cb.getSelectedItem()) +  " " + b.getText() + " fgfgdfgfgdgdg " + label.getText() + " next text " + tf5.getText() );
   }
 
   private static void setTextTfNext(JTextField tf) {
